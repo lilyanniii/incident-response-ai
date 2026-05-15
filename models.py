@@ -10,7 +10,6 @@ class Incident(BaseModel):
     severity: int
     status: str
     service: str
-    service: str
     root_cause: Optional[str] = None
     resolution: Optional[str] = None
     tags: list[str] = []
