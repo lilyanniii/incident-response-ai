@@ -2,4 +2,8 @@ CLAUDE.md
 LEARNINGS.md
 venv/
 __pycache__/
-.vscode
+.vscode/
+.env
+*.pyc
+chroma_db/
+*.db
