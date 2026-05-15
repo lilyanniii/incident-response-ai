@@ -1,0 +1,5 @@
+CLAUDE.md
+LEARNINGS.md
+venv/
+__pycache__/
+.vscode
