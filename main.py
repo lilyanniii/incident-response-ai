@@ -11,7 +11,7 @@ def get_incident(incident_id: int):
     return {"incident_id": incident_id, "status": "investigating"}
 
 @app.get("/incidents")
-def list_incidents(status: str = None, severity: int = None, limit: int = 10):
+def list_incidents(status: str = None or '', severity: int = None or 0, limit: int = 10):
     safe_limit = min(limit, 100)
     return {
         "filters": {"status": status, "severity": severity},
