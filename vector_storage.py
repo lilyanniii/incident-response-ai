@@ -9,7 +9,8 @@ def store_incidents_in_db():
     for incident in incidents:
         collection.add(
             ids = [incident.id],
-            documents = [f"{incident.title} {incident.root_cause or ''} {incident.resolution or ''} {', '.join(incident.tags)} {incident.description or ''}"]
+            documents = [f"{incident.title} {incident.root_cause or ''} {incident.resolution or ''} {', '.join(incident.tags)} {incident.description or ''}"],
+            metadatas= [{"severity": incident.severity, "status": incident.status, "service": incident.service}]
         )
     return collection
 
