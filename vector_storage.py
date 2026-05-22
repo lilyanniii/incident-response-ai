@@ -1,7 +1,6 @@
 import chromadb
 from data_generator import generate_incidents
 
-import chromadb
 chroma_client = chromadb.Client()
 collection = chroma_client.create_collection(name="incidents")
 
@@ -10,7 +9,7 @@ def store_incidents_in_db():
     for incident in incidents:
         collection.add(
             ids = [incident.id],
-            documents = [f"{incident.title} {incident.root_cause or ''} {incident.resolution or ''} {incident.tags}"]
+            documents = [f"{incident.title} {incident.root_cause or ''} {incident.resolution or ''} {', '.join(incident.tags)} {incident.description or ''}"]
         )
     return collection
 
