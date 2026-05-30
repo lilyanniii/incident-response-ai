@@ -45,9 +45,9 @@ An AI-powered tool that helps SREs and DevOps engineers respond to incidents fas
 - [x] Store and retrieve incidents semantically
 
 ### Phase 3: AI Core
-- [ ] Build RAG (Retrieval Augmented Generation) system
-- [ ] Prompt engineering for incident analysis
-- [ ] Root cause suggestion logic
+- [x] Build RAG (Retrieval Augmented Generation) system
+- [x] Prompt engineering for incident analysis
+- [x] Root cause suggestion logic
 
 ### Phase 4: Go CLI
 - [ ] Go fundamentals

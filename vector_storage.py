@@ -12,13 +12,21 @@ def store_incidents_in_db():
             documents = [f"{incident.title} {incident.root_cause or ''} {incident.resolution or ''} {', '.join(incident.tags)} {incident.description or ''}"],
             metadatas= [{"severity": incident.severity, "status": incident.status, "service": incident.service}]
         )
-    return collection
+    return
 
 def get_similar_incidents(user_query):
-    context = collection.query(
+    results = collection.query(
     query_texts=[user_query],
-    n_results=10
-    )['documents']
+    n_results=5
+    )
 
-    print(context)
-    return context
+    filtered_docs = []
+    filtered_metadatas = []
+
+    for doc, meta, distance in zip(results['documents'][0], results['metadatas'][0], results['distances'][0]):
+        if distance < 0.3:
+            filtered_docs.append(doc)
+            filtered_metadatas.append(meta)
+
+
+    return filtered_docs, filtered_metadatas

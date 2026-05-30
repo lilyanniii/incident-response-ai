@@ -1,29 +1,42 @@
 import os
 from anthropic import Anthropic
 from dotenv import load_dotenv
-from vector_storage import get_similar_incidents
+from vector_storage import get_similar_incidents, store_incidents_in_db
 
-load_dotenv(dotenv_path=".env")
+load_dotenv()
+store_incidents_in_db()
 
-client = Anthropic(
-    api_key=os.environ.get("ANTHROPIC_API_KEY")
-)
+user_input = "Server is returning 500 errors" #needs to be changed later on once the cli is built to take in user input
+similar_incidents = get_similar_incidents(user_input)
 
-message = client.messages.create(
-    max_tokens=1024,
-    messages=[
-        {
-            "role": "user",
-            "content": "Hello, claude"
-        }
-    ],
-    model="claude-opus-4-6"
-)
+def claude_response():
+    client = Anthropic(
+        api_key=os.environ.get("ANTHROPIC_API_KEY")
+    )
+    
+    agentic_prompt = f"""
+    You are an SRE agent that is responsible for assisting in incident response. Your job is to assist in finding a root cause
+    for what the user is asking. You will be concise in your responses and only provide the necessary details. If you do not have the data to properly respond, say so. 
+    Do not make anything up. 
 
-print(message.content)
+    current incident: {user_input}
 
-#next steps is to 
-# call the get_similar_incidents function
-# Build prompt that includes both the user's incident description and retrieved past incidents as context
-# send it to claude
-# return the response
+    Similar past incidents:
+    {similar_incidents}
+
+    Based on the result of these past incidents, suggest the most likely root cause and possible troubleshooting steps.
+    """
+    message = client.messages.create(
+        max_tokens=1024,
+        messages = [
+            {
+                "role": "user",
+                "content": agentic_prompt,
+            }
+        ],
+        model="claude-opus-4-6",
+    )
+    print(message.content[0].text)
+
+
+claude_response()
