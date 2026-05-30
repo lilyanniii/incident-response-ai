@@ -1,4 +1,3 @@
-CLAUDE.md
 LEARNINGS.md
 venv/
 __pycache__/
@@ -7,3 +6,4 @@ __pycache__/
 *.pyc
 chroma_db/
 *.db
+PROGRESS.md
