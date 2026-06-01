@@ -4,12 +4,8 @@ from dotenv import load_dotenv
 from vector_storage import get_similar_incidents, store_incidents_in_db
 
 load_dotenv()
-store_incidents_in_db()
 
-user_input = "Server is returning 500 errors" #needs to be changed later on once the cli is built to take in user input
-similar_incidents = get_similar_incidents(user_input)
-
-def claude_response():
+def claude_response(user_input: str, similar_incidents: list) -> str:
     client = Anthropic(
         api_key=os.environ.get("ANTHROPIC_API_KEY")
     )
@@ -36,7 +32,5 @@ def claude_response():
         ],
         model="claude-opus-4-6",
     )
-    print(message.content[0].text)
+    return message.content[0].text
 
-
-claude_response()
