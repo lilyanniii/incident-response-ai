@@ -57,4 +57,5 @@ An AI-powered tool that helps SREs and DevOps engineers respond to incidents fas
 ### Phase 5: Polish & Extend
 - [ ] Docker containerization
 - [ ] Testing strategies
+- [ ] Conversation history — store message history per session and pass to Claude for follow-up questions
 - [ ] Optional: Slack/Discord bot, web UI, Kubernetes deployment
