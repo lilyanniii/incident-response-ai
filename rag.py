@@ -21,6 +21,8 @@ def claude_response(user_input: str, similar_incidents: list) -> str:
     {similar_incidents}
 
     Based on the result of these past incidents, suggest the most likely root cause and possible troubleshooting steps.
+
+    Do not use markdown formatting. Respond in plain text only.
     """
     message = client.messages.create(
         max_tokens=1024,
@@ -30,7 +32,7 @@ def claude_response(user_input: str, similar_incidents: list) -> str:
                 "content": agentic_prompt,
             }
         ],
-        model="claude-opus-4-6",
+        model="claude-sonnet-4-6",
     )
     return message.content[0].text
 

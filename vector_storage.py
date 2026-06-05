@@ -20,13 +20,5 @@ def get_similar_incidents(user_query):
     n_results=5
     )
 
-    filtered_docs = []
-    filtered_metadatas = []
 
-    for doc, meta, distance in zip(results['documents'][0], results['metadatas'][0], results['distances'][0]):
-        if distance < 0.3:
-            filtered_docs.append(doc)
-            filtered_metadatas.append(meta)
-
-
-    return filtered_docs, filtered_metadatas
+    return results['documents'][0], results['metadatas'][0]

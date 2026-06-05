@@ -2,10 +2,10 @@ from fastapi import FastAPI, HTTPException, Request
 from vector_storage import get_similar_incidents, store_incidents_in_db
 from pydantic  import BaseModel, Field
 from rag import claude_response
-from fastapi.responses import PlainTextResponse
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
+from fastapi.responses import PlainTextResponse
 
 
 limiter = Limiter(key_func=get_remote_address)
