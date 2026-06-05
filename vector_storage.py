@@ -20,5 +20,4 @@ def get_similar_incidents(user_query):
     n_results=5
     )
 
-
     return results['documents'][0], results['metadatas'][0]

@@ -19,7 +19,7 @@ class UserInput(BaseModel):
 
 @app.get("/")
 def read_root():
-    return{"message": "Hello World"}
+    return{"message": "Incident Server (Synthetic data)"}
 
 @app.get("/incidents/{incident_id}")
 def get_incident(incident_id: int):
