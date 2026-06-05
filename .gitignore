@@ -7,3 +7,6 @@ __pycache__/
 chroma_db/
 *.db
 PROGRESS.md
+# Go
+cli/incident-response-cli
+cli/*.exe

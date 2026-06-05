@@ -50,11 +50,16 @@ An AI-powered tool that helps SREs and DevOps engineers respond to incidents fas
 - [x] Root cause suggestion logic
 
 ### Phase 4: Go CLI
-- [ ] Go fundamentals
-- [ ] Building CLI tools in Go
-- [ ] HTTP client to talk to Python API
+- [x] Go fundamentals
+- [x] Building CLI tools in Go
+- [x] HTTP client to talk to Python API
 
 ### Phase 5: Polish & Extend
 - [ ] Docker containerization
 - [ ] Testing strategies
+- [ ] Conversation history — store message history per session and pass to Claude for follow-up questions
+- [ ] User-submitted incidents — Go CLI command that lets users submit their own incidents to be stored in ChromaDB via the API
+- [ ] Improve retrieval quality — either replace synthetic data with more realistic/varied incidents, or allow importing real incident data from a JSON/CSV file via the CLI
+- [ ] Cloud deployment — host FastAPI + ChromaDB on cloud so users can download the Go binary and use it without any local setup
 - [ ] Optional: Slack/Discord bot, web UI, Kubernetes deployment
+- [ ] Optional: User-supplied Anthropic API key — CLI prompts for key on first run, shifts billing to the user
