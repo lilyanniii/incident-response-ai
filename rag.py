@@ -1,5 +1,6 @@
 import os
 from anthropic import Anthropic
+from anthropic.types import TextBlock
 from dotenv import load_dotenv
 from vector_storage import get_similar_incidents, store_incidents_in_db
 
@@ -34,5 +35,8 @@ def claude_response(user_input: str, similar_incidents: list) -> str:
         ],
         model="claude-sonnet-4-6",
     )
-    return message.content[0].text
+    block = message.content[0]
+    if isinstance(block, TextBlock):
+        return block.text
+    return ""
 
