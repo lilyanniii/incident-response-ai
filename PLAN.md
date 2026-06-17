@@ -55,9 +55,15 @@ An AI-powered tool that helps SREs and DevOps engineers respond to incidents fas
 - [x] HTTP client to talk to Python API
 
 ### Phase 5: v1.0 Release
-- [ ] User-submitted incidents — Go CLI command that lets users submit their own incidents to be stored in ChromaDB via the API
+- [ ] **User-submitted incidents** — let users submit their own incidents to be stored in ChromaDB via the API *(in progress)*
+  - [x] Auto-generate unique incident ID on the API (`get_last_incident` in `vector_storage.py` — reads all IDs, takes max number + 1, formats as `INC-XXXX`)
+  - [ ] Storage function to add a single user-submitted incident to ChromaDB
+  - [ ] POST endpoint to receive a new incident (decide: reuse `Incident` model vs. a new `NewIncident` model without `id`/`created_at`)
+  - [ ] Go CLI menu — let user choose between submitting a new incident or querying existing ones
 - [ ] Docker containerization — containerize FastAPI + ChromaDB for consistent deployment
 - [ ] Cloud deployment — host on cloud, compile Go binary per platform, publish to GitHub Releases
+
+> Dev convenience: `run.sh` starts the API, waits for it, then launches the CLI (cleans up the server on exit).
 
 ### Phase 6: Future Releases
 - [ ] Testing strategies
